@@ -25,6 +25,13 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
+	
+	
+	public void update(User newUser) {
+		this.password = newUser.password;
+		this.name = newUser.name;
+		this.email = newUser.email;
+	}
 
 	// setter.. toString 부분  
 }
