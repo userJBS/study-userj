@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.userj</groupId>
-	<artifactId>com.userj</artifactId>
+	<artifactId>study-userj</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>com-userj</name>
-	<description>UserJ</description>
+	<name>study-userj</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
