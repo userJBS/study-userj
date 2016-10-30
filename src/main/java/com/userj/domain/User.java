@@ -7,11 +7,13 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Setter //( 롬복 셋팅이 필요)
 @ToString 
+@Getter
 @Entity // 데이터 베이스와 매핑하게된다.
 public class User {
 
