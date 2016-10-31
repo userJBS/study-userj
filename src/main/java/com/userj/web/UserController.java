@@ -34,7 +34,7 @@ public class UserController {
 	}
 
 	// 회원 가입
-	@GetMapping("/create")
+	@GetMapping("/create") 
 	public String form() {
 		return "/user/create";
 	}
@@ -61,7 +61,7 @@ public class UserController {
 		}
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		if (!id.equals(sessionUser.getId())) { // 세션 값과 파라미터에서 받아온 id값 비교
+		if (!sessionUser.machId(id)) { // 세션 값과 파라미터에서 받아온 id값 비교
 			throw new IllegalStateException("Session value mismatch!");
 		}
 
@@ -93,7 +93,7 @@ public class UserController {
 		}
 
 		//!password.equals(user.getPassword()
-		if (user.machPassword(password)) {
+		if (!user.machPassword(password)) {
 			return "redirect:/users/login"; // 비밀번호가 다를 경우.
 		}
 
@@ -112,7 +112,7 @@ public class UserController {
 		}
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		if (!id.equals(sessionUser.getId())) {  
+		if (!sessionUser.machId(id)) {  
 			throw new IllegalStateException("You cat't update the anther user!");
 		}
 
