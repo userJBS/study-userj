@@ -111,5 +111,6 @@ public class UserController {
 		userRepository.save(user);
 		return "redirect:/users"; // users URL로 이동
 	}
+	
 
 }
