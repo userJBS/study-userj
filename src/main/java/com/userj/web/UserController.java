@@ -48,7 +48,7 @@ public class UserController {
 	// 로그아웃
 	@GetMapping("/logout") // /users/logout 요청시 세션 값 SessionUser 삭제
 	public String logout(HttpSession session) {
-		session.removeAttribute("sessionUser");
+		session.removeAttribute(HttpSessionUtils.USER_SESSION_KEY);
 		return "redirect:/";
 	}
 
@@ -56,12 +56,12 @@ public class UserController {
 	@GetMapping("/update/{id}")
 	public String updateForm(@PathVariable Long id, Model model, HttpSession session) {
 
-		if (HttpSessionUtils.isLoginUser(session)) { // 세션값이 없을 경우 로그인화면으로 이동
+		if (!HttpSessionUtils.isLoginUser(session)) { // 세션값이 없을 경우 로그인화면으로 이동
 			return "redirect:/users/login";
 		}
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		if (!sessionUser.machId(id)) { // 세션 값과 파라미터에서 받아온 id값 비교
+		if (sessionUser.machId(id)) { // 세션 값과 파라미터에서 받아온 id값 비교
 			throw new IllegalStateException("Session value mismatch!");
 		}
 
@@ -107,7 +107,7 @@ public class UserController {
 	@PostMapping("/update/{id}")
 	public String update(@PathVariable Long id, User updateUser, HttpSession session) {
 
-		if (HttpSessionUtils.isLoginUser(session)) {
+		if (!HttpSessionUtils.isLoginUser(session)) {
 			return "redirect:/users/login"; // 세션 값이 없을경우
 		}
 

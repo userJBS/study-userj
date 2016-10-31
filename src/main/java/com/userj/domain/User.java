@@ -39,7 +39,7 @@ public class User {
 		if(newId == null){
 			return false;
 		}
-		return newId.equals(password);
+		return newId.equals(id);
 	}
 
 	public boolean machPassword(String newPassword) {
