@@ -55,14 +55,13 @@ public class UserController {
 	// 회원 정보 수정
 	@GetMapping("/update/{id}")
 	public String updateForm(@PathVariable Long id, Model model, HttpSession session) {
-		Object tempUser = session.getAttribute("sessionUser");
 
-		if (tempUser == null) { // 세션값이 없을 경우 로그인화면으로 이동
+		if (HttpSessionUtils.isLoginUser(session)) { // 세션값이 없을 경우 로그인화면으로 이동
 			return "redirect:/users/login";
 		}
 
-		User sessionUser = (User) tempUser;
-		if (!id.equals(sessionUser.getId())) { // 세션 값과 url id값 비교
+		User sessionUser = HttpSessionUtils.getUserFromSession(session);
+		if (!id.equals(sessionUser.getId())) { // 세션 값과 파라미터에서 받아온 id값 비교
 			throw new IllegalStateException("Session value mismatch!");
 		}
 
@@ -73,6 +72,7 @@ public class UserController {
 
 	// ------------Form-----------끝
 
+	
 	// TODO 2. ------------로직-----------시작
 
 	// 회원 가입 요청 처리
@@ -92,12 +92,13 @@ public class UserController {
 			return "redirect:/users/login"; // 아이디가 없을 경우.
 		}
 
-		if (!password.equals(user.getPassword())) {
+		//!password.equals(user.getPassword()
+		if (user.machPassword(password)) {
 			return "redirect:/users/login"; // 비밀번호가 다를 경우.
 		}
 
 		// 세션에 user 저장
-		session.setAttribute("sessionUser", user);
+		session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, user);
 
 		return "redirect:/";
 	}
@@ -105,14 +106,13 @@ public class UserController {
 	// 회원가입 폼에서 > 회원가입 요청 처리
 	@PostMapping("/update/{id}")
 	public String update(@PathVariable Long id, User updateUser, HttpSession session) {
-		Object tempUser = session.getAttribute("sessionUser");
 
-		if (tempUser == null) {
+		if (HttpSessionUtils.isLoginUser(session)) {
 			return "redirect:/users/login"; // 세션 값이 없을경우
 		}
 
-		User sessionUser = (User) tempUser;
-		if (!id.equals(sessionUser.getId())) { // id 값 다시 비교
+		User sessionUser = HttpSessionUtils.getUserFromSession(session);
+		if (!id.equals(sessionUser.getId())) {  
 			throw new IllegalStateException("You cat't update the anther user!");
 		}
 

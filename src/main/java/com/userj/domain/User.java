@@ -35,5 +35,19 @@ public class User {
 		this.email = newUser.email;
 	}
 
+	public boolean machId(Long newId){
+		if(newId == null){
+			return false;
+		}
+		return newId.equals(password);
+	}
+
+	public boolean machPassword(String newPassword) {
+		if(newPassword == null){
+			return false;
+		}
+		return newPassword.equals(password);
+	}
+
 	// setter.. toString 부분  
 }
