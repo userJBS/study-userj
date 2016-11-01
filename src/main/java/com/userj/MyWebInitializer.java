@@ -7,7 +7,7 @@ public class MyWebInitializer extends SpringBootServletInitializer{
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(MyWebInitializer.class);
+		return builder.sources(ComUserjApplication.class);
 	}
 
 }
