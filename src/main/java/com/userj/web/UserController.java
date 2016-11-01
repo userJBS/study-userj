@@ -61,7 +61,7 @@ public class UserController {
 		}
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		if (sessionUser.machId(id)) { // 세션 값과 파라미터에서 받아온 id값 비교
+		if (!sessionUser.machId(id)) { // 세션 값과 파라미터에서 받아온 id값 비교
 			throw new IllegalStateException("Session value mismatch!");
 		}
 
