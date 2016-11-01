@@ -20,11 +20,11 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 
-	// TODO UserController 역할
-	// 1. Form 관련 URL ( 폼에 연결 또는 작은 로직을 담고 있다.)
-	// 2. 핵심 요청 처리를 하는 로직 구현
+	// TODO  역할 !
+	// 1. Form 연결 URL ( GET 처리 )
+	// 2. 로직 처리 ( POST 처리 )
 
-	// TODO 1. ------------Form 관련 URL------------시작
+	// TODO 1. ------------ Form 연결 URL ( GET 처리 )------------시작
 
 	// 회원 리스트
 	@GetMapping("/list") // list.html 에서 Get으로 값이 들어오면 모든 회원 리스트를 보여준다
@@ -73,7 +73,7 @@ public class UserController {
 	// ------------Form-----------끝
 
 	
-	// TODO 2. ------------로직-----------시작
+	// TODO 2. ------------로직 처리 ( POST 처리 )-----------시작
 
 	// 회원 가입 요청 처리
 	@PostMapping("create") // form.html 에서 Post로 값이 들어오면 회원가입
