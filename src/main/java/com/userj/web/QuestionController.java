@@ -26,7 +26,7 @@ public class QuestionController {
 	// TODO 1. ------------ Form 연결 URL ( GET 처리 )------------시작
 	@GetMapping("list")
 	public String list() {
-		return "/index";
+		return "/index"; 
 	}
 
 	@GetMapping("create")
@@ -48,7 +48,7 @@ public class QuestionController {
 		}
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		Question newQuestion=new Question(sessionUser.getUserId(), quesion.getTitle(), quesion.getContents());
+		Question newQuestion=new Question(sessionUser, quesion.getTitle(), quesion.getContents());
 		questionRepository.save(newQuestion);
 
 		return "redirect:/";

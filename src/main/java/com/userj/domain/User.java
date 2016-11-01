@@ -12,7 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Setter //( 롬복 셋팅이 필요)
-@ToString 
+@ToString(exclude="password")
 @Getter
 @Entity // 데이터 베이스와 매핑하게된다.
 public class User {
@@ -27,7 +27,6 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
-	
 	
 	public void update(User newUser) {
 		this.password = newUser.password;
