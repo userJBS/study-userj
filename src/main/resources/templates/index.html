@@ -9,7 +9,6 @@
 <body>
 	{{> /include/navigation}}
 
-
 	<div class="container" id="main">
 		<div class="col-md-12 col-sm-12 col-lg-10 col-lg-offset-1">
 			<div class="panel panel-default qna-list">
@@ -19,12 +18,12 @@
 					<li>
 						<div class="wrap">
 							<div class="main">
-								<strong class="subject"> <a href="/qna/show">{{title}}</a>
+								<strong class="subject"> <a href="/questions/show/{{id}}">{{title}}</a>
 								</strong>
 								<div class="auth-info">
 									<i class="icon-add-comment"></i>
 									<span class="time">{{formattedCreateDate}}</span>
-									<a href="./user/profile.html" class="author">{{writer.name}}</a>
+									<a href="#" class="author">{{writer.name}}</a>
 								</div>
 								<div class="reply" title="댓글">
 									<i class="icon-reply"></i>

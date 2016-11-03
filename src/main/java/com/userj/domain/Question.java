@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +27,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Question {
 
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -31,7 +35,6 @@ public class Question {
 	@ManyToOne  // 질문(N) : 회원 (1) 다:1 관계 FK 설정
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))// FK이름설정
 	private User writer;
- 
 	private String title;
 	private String contents;
 	private LocalDateTime createDate;
@@ -49,5 +52,18 @@ public class Question {
 		}
 		return createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
 	}
+
+	public void update(String title, String contents) {
+		this.title = title;
+		this.contents = contents;		
+	}
+
+	//  (수정, 삭제) 글 작성자인지 체크한다.
+	public boolean isSameWriter(User sessionedUser) {
+		System.out.println(sessionedUser);
+		System.out.println(this);
+		return this.writer.getPassword().equals(sessionedUser.getPassword());
+	}
+
 
 }

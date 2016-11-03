@@ -17,6 +17,7 @@ public class HttpSessionUtils {
 		return true;// 세션 값이 있으면 
 	}
 
+	// 세션값에 sessionedUser 값이 있다면 User 객체를 리턴 해준다.
 	public static User getUserFromSession(HttpSession session) {
 		if (!isLoginUser(session)) {
 			return null;  // 세션 값이 없으면 null 리턴
