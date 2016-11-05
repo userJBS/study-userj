@@ -4,7 +4,6 @@
 
 </head>
 <body>
-
 	{{> /include/navigation}}
 	<div class="container" id="main">
 		<div class="col-md-12 col-sm-12 col-lg-12">
@@ -22,17 +21,20 @@
 									class="article-author-thumb" alt="">
 							</div>
 							<div class="article-header-text">
-								<a href="#" class="article-author-name">{{writer.name}}</a> <a
-									href="#" class="article-header-time" title="퍼머링크">{{FormattedCreateDate}}<i
+								<a href="#" class="article-author-name">{{writer.name}}</a> <a href="#"
+									class="article-header-time" title="글 작성 시간">{{FormattedCreateDate}}<i
 									class="icon-link"></i>
-								</a> 
+								</a>
 							</div>
 						</div>
 						<div class="article-doc">
 							<p>{{contents}}</p>
 						</div>
+
 						<div class="article-util">
 							<ul class="article-util-list">
+								<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
+								{{#sessionedUser}}
 								<li>
 									<a class="link-modify-article" href="/questions/{{id}}/update">수정</a>
 								</li>
@@ -41,6 +43,7 @@
 										<button class="link-delete-article" type="submit">삭제</button>
 									</form>
 								</li>
+								{{/sessionedUser}}
 								<li>
 									<a class="link-modify-article" href="/">목록</a>
 								</li>
@@ -48,28 +51,31 @@
 						</div>
 					</article>
 
+
 					<div class="qna-comment">
 						<div class="qna-comment-slipp">
 							<p class="qna-comment-count">
-								<strong>2</strong>개의 의견
+								<strong>#</strong>개의 의견
 							</p>
 							<div class="qna-comment-slipp-articles">
-
+								{{#answers}}
 								<article class="article" id="answer-1405">
 									<div class="article-header">
 										<div class="article-header-thumb">
-											<img src="https://graph.facebook.com/v2.3/1324855987/picture"
+											<img
+												src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160"
 												class="article-author-thumb" alt="">
 										</div>
 										<div class="article-header-text">
-											<a href="#" class="article-author-name">자바지기</a> <a
-												href="#" class="article-header-time" title="퍼머링크"> 2016-01-12
-												14:06 </a>
+											<a href="#" class="article-author-name">{{writer.name}}</a> <a href="#"
+												class="article-header-time" title="글 작성 시간">{{FormattedCreateDate}}</a>
 										</div>
 									</div>
 									<div class="article-doc comment-doc">
-										<p>이 글만으로는 원인 파악하기 힘들겠다. 소스 코드와 설정을 단순화해서 공유해 주면 같이 디버깅해줄 수도 있겠다.</p>
+										<p>{{contents}}</p>
 									</div>
+									<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
+									{{#sessionedUser}}
 									<div class="article-util">
 										<ul class="article-util-list">
 											<li>
@@ -80,16 +86,17 @@
 													<input type="hidden" name="_method" value="DELETE">
 													<button type="submit" class="link-delete-article">삭제</button>
 												</form>
-											</li>  
+											</li>
 										</ul>
 									</div>
+									{{/sessionedUser}}
 								</article>
-
-								<form class="submit-write">
+								{{/answers}}
+								<form class="submit-write" method="post" action="/qustions/{{id}}/answers/create">
 									<div class="form-group" style="padding: 14px;">
-										<textarea class="form-control" placeholder="Update your status"></textarea>
+										<textarea class="form-control" placeholder="Update your status" name="contents"></textarea>
 									</div>
-									<button class="btn btn-success pull-right" type="button">답변하기</button>
+									<button class="btn btn-success pull-right" type="submit">답변하기</button>
 									<div class="clearfix" />
 								</form>
 							</div>

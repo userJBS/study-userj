@@ -29,13 +29,13 @@ public class QuestionController {
 	// TODO 1. ------------ Form 연결 URL ( GET 처리 )------------시작
 
 	// 글 리스트
-	@GetMapping("list")
+	@GetMapping("/list")
 	public String list() {
 		return "/index";
 	}
 
 	// 글 등록
-	@GetMapping("create")
+	@GetMapping("/create")
 	public String create(HttpSession session) {
 		if (!HttpSessionUtils.isLoginUser(session)) {
 			return "redirect:/users/login";
@@ -52,7 +52,7 @@ public class QuestionController {
 	}
 
 	// 업데이트
-	@GetMapping("{id}/update")
+	@GetMapping("/{id}/update")
 	public String update(@PathVariable Long id, Model model, HttpSession session) {
 		// 로그인이 안된 상태일 경우
 		if (!HttpSessionUtils.isLoginUser(session)) {
@@ -74,7 +74,7 @@ public class QuestionController {
 	}
 
 	// 삭제
-	@GetMapping("{id}/delete")
+	@GetMapping("/{id}/delete")
 	public String delete(@PathVariable Long id) {
 		questionRepository.delete(id);
 		return "redirect:/";
@@ -83,7 +83,7 @@ public class QuestionController {
 	// ------------Form-----------끝
 
 	// TODO 2. ------------로직 처리 ( POST 처리 )-----------시작
-	@PostMapping("create")
+	@PostMapping("/create")
 	public String create(Question quesion, HttpSession session) {
 		if (!HttpSessionUtils.isLoginUser(session)) {
 			return "redirect:/users/login";
@@ -96,7 +96,7 @@ public class QuestionController {
 		return "redirect:/";
 	}
 
-	@PostMapping("{id}/update")
+	@PostMapping("/{id}/update")
 	public String update(@PathVariable Long id, Question newQuestion) {
 		Question question = questionRepository.findOne(id);
 		question.update(newQuestion.getTitle(), newQuestion.getContents());
