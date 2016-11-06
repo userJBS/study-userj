@@ -63,8 +63,6 @@ public class Question {
 
 	// (수정, 삭제) 글 작성자인지 체크한다.
 	public boolean isSameWriter(User sessionedUser) {
-		System.out.println(sessionedUser);
-		System.out.println(this);
 		return this.writer.getPassword().equals(sessionedUser.getPassword());
 	}
 

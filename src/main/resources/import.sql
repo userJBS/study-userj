@@ -8,3 +8,4 @@ insert into USER (ID,USER_ID, PASSWORD, NAME, EMAIL) VALUES ('2','id02', 'pass02
 
  insert into answer (id, contents, create_date, question_id, writer_id) values (1, 'test 01!!', current_timestamp(), '1', '2')
  insert into answer (id, contents, create_date, question_id, writer_id) values (2, 'test 02!!', current_timestamp(), '1', '1')
+ 

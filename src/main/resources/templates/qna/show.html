@@ -34,7 +34,8 @@
 						<div class="article-util">
 							<ul class="article-util-list">
 								<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
-								{{#sessionedUser}}
+								<!-- {{#sessionedUser}} -->
+								<!-- {{/sessionedUser}} -->
 								<li>
 									<a class="link-modify-article" href="/questions/{{id}}/update">수정</a>
 								</li>
@@ -43,11 +44,10 @@
 										<button class="link-delete-article" type="submit">삭제</button>
 									</form>
 								</li>
-								{{/sessionedUser}}
 								<li>
 									<a class="link-modify-article" href="/">목록</a>
 								</li>
-							</ul>
+							</ul> 
 						</div>
 					</article>
 
