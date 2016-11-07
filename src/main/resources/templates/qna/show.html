@@ -47,7 +47,7 @@
 								<li>
 									<a class="link-modify-article" href="/">목록</a>
 								</li>
-							</ul> 
+							</ul>
 						</div>
 					</article>
 
@@ -92,11 +92,11 @@
 									{{/sessionedUser}}
 								</article>
 								{{/answers}}
-								<form class="submit-write" method="post" action="/qustions/{{id}}/answers/create">
+								<form class="answer-write" method="post" action="/api/qustions/{{id}}/answers/create">
 									<div class="form-group" style="padding: 14px;">
-										<textarea class="form-control" placeholder="Update your status" name="contents"></textarea>
+										<textarea class="form-control" placeholder="답변..." name="contents"></textarea>
 									</div>
-									<button class="btn btn-success pull-right" type="submit">답변하기</button>
+									<input type="submit" class="btn btn-success pull-right" value="답변하기" />
 									<div class="clearfix" />
 								</form>
 							</div>
@@ -111,7 +111,7 @@
 	<article class="article">
 		<div class="article-header">
 			<div class="article-header-thumb">
-				<img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">
+				<img src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160" class="article-author-thumb" alt="">
 			</div>
 			<div class="article-header-text">
 				{0}
@@ -124,7 +124,7 @@
 		<div class="article-util">
 		<ul class="article-util-list">
 			<li>
-				<a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a>
+				<a class="link-modify-article" href="#">수정</a>
 			</li>
 			<li>
 				<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">

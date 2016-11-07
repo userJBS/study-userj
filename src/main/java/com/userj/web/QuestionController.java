@@ -57,7 +57,7 @@ public class QuestionController {
 		Result result = valid(session, question);
 
 		if (!result.isValid()) {
-			model.addAttribute("erreoMessage", result.getErrorMessage());
+			model.addAttribute("erreoMessage", result.getErrorMessage()+"@");
 			return "/user/login";
 		}
 
@@ -93,18 +93,18 @@ public class QuestionController {
 
 	// TODO 2. ------------로직 처리 ( POST 처리 )-----------시작
 	@PostMapping("/create")
-	public String create(Question quesion, HttpSession session) {
+	public String create(String title, String contents, HttpSession session) {
 		// hasPernission(session);
 
 		User sessionUser = HttpSessionUtils.getUserFromSession(session);
-		Question newQuestion = new Question(sessionUser, quesion.getTitle(), quesion.getContents());
+		Question newQuestion = new Question(sessionUser, title, contents);
 		questionRepository.save(newQuestion);
 
 		return "redirect:/";
 	}
 
 	@PostMapping("/{id}/update")
-	public String update(@PathVariable Long id, Question newQuestion, Model model, HttpSession session) {
+	public String update(@PathVariable Long id, String title, String contents, Model model, HttpSession session) {
 		Question question = questionRepository.findOne(id);
 		Result result = valid(session, question);
 
@@ -113,7 +113,7 @@ public class QuestionController {
 			return "/user/login";
 		}
 
-		question.update(newQuestion.getTitle(), newQuestion.getContents());
+		question.update(title, contents);
 		questionRepository.save(question);
 		model.addAttribute("question", question);
 		return String.format("redirect:/questions/show/%d/", id);

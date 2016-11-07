@@ -3,10 +3,10 @@ package com.userj.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.userj.domain.Answer;
 import com.userj.domain.AnswerRepository;
@@ -14,26 +14,25 @@ import com.userj.domain.Question;
 import com.userj.domain.QuestionRepository;
 import com.userj.domain.User;
 
-@Controller
-@RequestMapping("/qustions/{questionId}/answers")
-public class AnswerController {
-	
+@RestController // 데이터를 JSON으로 변화 시키려면 @Controller 변경
+@RequestMapping("/api/qustions/{questionId}/answers")
+public class ApiAnswerController {
+
 	@Autowired
 	private QuestionRepository questionRepository;
-	
+
 	@Autowired
 	private AnswerRepository answerRepository;
 
 	@PostMapping("/create")
-	public String create(@PathVariable Long questionId, String contents, HttpSession session) {
+	public Answer create(@PathVariable Long questionId, String contents, HttpSession session) {
 		if (!HttpSessionUtils.isLoginUser(session)) {
-			return "redirect:/users/login";
+			return null;
 		}
 		User loginUser = HttpSessionUtils.getUserFromSession(session);
-		Question question=questionRepository.findOne(questionId);
-		Answer answer=new Answer(loginUser, question, contents);
-		answerRepository.save(answer);
-		return String.format("redirect:/questions/show/%d", questionId);
+		Question question = questionRepository.findOne(questionId);
+		Answer answer = new Answer(loginUser, question, contents);
+		return answerRepository.save(answer); // DB에 저장된 Answer 리턴
 	}
 
 }
