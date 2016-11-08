@@ -75,24 +75,20 @@
 										<p>{{contents}}</p>
 									</div>
 									<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
-									{{#sessionedUser}}
 									<div class="article-util">
 										<ul class="article-util-list">
 											<li>
-												<a class="link-modify-article" href="#">수정</a>
+												<a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a>
 											</li>
 											<li>
-												<form class="form-delete" action="#" method="POST">
-													<input type="hidden" name="_method" value="DELETE">
-													<button type="submit" class="link-delete-article">삭제</button>
-												</form>
+												<a class="link-delete-article" href="/api/questions/{{question.id}}/answers/{{id}}">삭제</a>
 											</li>
 										</ul>
 									</div>
-									{{/sessionedUser}}
 								</article>
 								{{/answers}}
-								<form class="answer-write" method="post" action="/api/qustions/{{id}}/answers/create">
+								<form class="answer-write" method="post"
+									action="/api/questions/{{id}}/answers/create">
 									<div class="form-group" style="padding: 14px;">
 										<textarea class="form-control" placeholder="답변..." name="contents"></textarea>
 									</div>
@@ -124,13 +120,10 @@
 		<div class="article-util">
 		<ul class="article-util-list">
 			<li>
-				<a class="link-modify-article" href="#">수정</a>
+				<a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a>
 			</li>
 			<li>
-				<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
-					<input type="hidden" name="answerId" value="{4}" />
-					<button type="submit" class="link-delete-article">삭제</button>
-				</form>
+				<a class="link-delete-article" href="/api/questions/{3}/answers/{4}">삭제</a>
 			</li>
 		</ul>
 		</div>
@@ -138,6 +131,9 @@
 	</script>
 
 	{{> /include/footer}}
-
+	<!-- 위에서 사용할 가능성이 있어서 잠시 주석처리 
+<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
+					<input type="hidden" name="answerId" value="{4}" />
+				</form> -->
 </body>
 </html>
