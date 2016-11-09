@@ -42,6 +42,11 @@ public class Question {
 	@Lob
 	@JsonProperty
 	private String contents;
+
+	// 답변 갯수
+	@JsonProperty
+	private Integer countOfAnswer = 0;
+
 	private LocalDateTime createDate;
 
 	@OneToMany(mappedBy = "question") // mappedBy="필드 이름"
@@ -49,6 +54,13 @@ public class Question {
 	@JsonIgnore
 	private List<Answer> answers;
 
+	public void addAnswer() {
+		this.countOfAnswer+=1;
+	}
+	
+	public void deleteAnswer() {
+		this.countOfAnswer-=1;
+	}
 	public Question(User writer, String title, String contents) {
 		this.writer = writer;
 		this.title = title;
