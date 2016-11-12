@@ -9,15 +9,14 @@ import com.userj.domain.QuestionRepository;
 
 @Controller
 public class HomeController {
- 
+
 	@Autowired
 	private QuestionRepository questionRepository;
-	
-	
+
 	// 첫페이지
 	@GetMapping("")
 	public String home(Model model) {
 		model.addAttribute("questions", questionRepository.findAll());
-		return "index"; //  templates/index.html 파일 접근
-	} 
+		return "index"; // templates/index.html 파일 접근
+	}
 }

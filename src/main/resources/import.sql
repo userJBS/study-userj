@@ -1,5 +1,5 @@
-insert into USER (ID,USER_ID, PASSWORD, NAME, EMAIL) VALUES ('1','id01', 'pass01', 'userj8164', 'user4825@naver.com');
-insert into USER (ID,USER_ID, PASSWORD, NAME, EMAIL) VALUES ('2','id02', 'pass02', 'account02', 'email02@naver.com');
+insert into USER (ID,USER_ID, PASSWORD, NAME, EMAIL,create_Date) VALUES ('1','id01', 'pass01', 'userj8164', 'user4825@naver.com', current_timestamp());
+insert into USER (ID,USER_ID, PASSWORD, NAME, EMAIL,create_Date) VALUES ('2','id02', 'pass02', 'account02', 'email02@naver.com', current_timestamp());
 
 
 

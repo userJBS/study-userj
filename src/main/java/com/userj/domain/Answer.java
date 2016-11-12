@@ -22,14 +22,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
-public class Answer {
-
-	@Id
-	@GeneratedValue
-	@JsonProperty
-	private Long id;
+public class Answer extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_writer"))
@@ -45,20 +39,10 @@ public class Answer {
 	@JsonProperty
 	private String contents;
 
-	private LocalDateTime createDate;
-
 	public Answer(User writer, Question question, String contents) {
 		this.writer = writer;
 		this.question = question;
 		this.contents = contents;
-		this.createDate = LocalDateTime.now();
-	}
-
-	public String getFormattedCreateDate() {
-		if (createDate == null) {
-			return "";
-		}
-		return createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
 	}
 
 	public boolean isSameWriter(User loginUser) {
