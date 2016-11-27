@@ -1,7 +1,5 @@
 # 자바 웹 애플리케이션 과정
-
-
-박재성님이 youtube에 강의 하신 내용 학습하면서 만든..
+박재성님이 youtube강의 내용 학습하면서 만든..
 
 
 박재성 : https://www.youtube.com/watch?v=JUKehW-c484&index=1&list=PLqaSEyuwXkSppQAjwjXZgKkjWbFoUdNXC
