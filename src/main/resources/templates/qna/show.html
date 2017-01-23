@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>{{> /include/header}}
-
 </head>
 <body>
 	{{> /include/navigation}}
@@ -16,42 +15,33 @@
 					<article class="article">
 						<div class="article-header">
 							<div class="article-header-thumb">
-								<img
-									src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160"
-									class="article-author-thumb" alt="">
+								<img src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160" class="article-author-thumb" alt="">
 							</div>
 							<div class="article-header-text">
-								<a href="#" class="article-author-name">{{writer.name}}</a> <a href="#"
-									class="article-header-time" title="글 작성 시간">{{FormattedCreateDate}}<i
-									class="icon-link"></i>
+								<a href="#" class="article-author-name">{{writer.name}}</a>
+								<a href="#" class="article-header-time" title="글 작성 시간">
+									{{FormattedCreateDate}}<i class="icon-link"></i>
 								</a>
 							</div>
 						</div>
 						<div class="article-doc">
 							<p>{{contents}}</p>
 						</div>
-
 						<div class="article-util">
 							<ul class="article-util-list">
 								<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
 								<!-- {{#sessionedUser}} -->
 								<!-- {{/sessionedUser}} -->
-								<li>
-									<a class="link-modify-article" href="/questions/{{id}}/update">수정</a>
-								</li>
+								<li><a class="link-modify-article" href="/questions/{{id}}/update">수정</a></li>
 								<li>
 									<form class="form-delete" action="/questions/{{id}}/delete" method="get">
 										<button class="link-delete-article" type="submit">삭제</button>
 									</form>
 								</li>
-								<li>
-									<a class="link-modify-article" href="/">목록</a>
-								</li>
+								<li><a class="link-modify-article" href="/">목록</a></li>
 							</ul>
 						</div>
 					</article>
-
-
 					<div class="qna-comment">
 						<div class="qna-comment-slipp">
 							<p class="qna-comment-count">
@@ -62,13 +52,11 @@
 								<article class="article" id="answer-1405">
 									<div class="article-header">
 										<div class="article-header-thumb">
-											<img
-												src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160"
-												class="article-author-thumb" alt="">
+											<img src="https://phinf.pstatic.net/contact/20161023_243/1477203314684NIixm_JPEG/KakaoTalk_20160408_181707096.jpg?type=s160" class="article-author-thumb" alt="">
 										</div>
 										<div class="article-header-text">
-											<a href="#" class="article-author-name">{{writer.name}}</a> <a href="#"
-												class="article-header-time" title="글 작성 시간">{{FormattedCreateDate}}</a>
+											<a href="#" class="article-author-name">{{writer.name}}</a>
+											<a href="#" class="article-header-time" title="글 작성 시간">{{FormattedCreateDate}}</a>
 										</div>
 									</div>
 									<div class="article-doc comment-doc">
@@ -77,18 +65,13 @@
 									<!--  TODO 이부분 나중에 로그인한 회원 유저일때만 true로 수정 현제는 로그인만하면 바로 보임 -->
 									<div class="article-util">
 										<ul class="article-util-list">
-											<li>
-												<a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a>
-											</li>
-											<li>
-												<a class="link-delete-article" href="/api/questions/{{question.id}}/answers/{{id}}">삭제</a>
-											</li>
+											<li><a class="link-modify-article" href="/api/qna/updateAnswer/{3}">수정</a></li>
+											<li><a class="link-delete-article" href="/api/questions/{{question.id}}/answers/{{id}}">삭제</a></li>
 										</ul>
 									</div>
 								</article>
 								{{/answers}}
-								<form class="answer-write" method="post"
-									action="/api/questions/{{id}}/answers/create">
+								<form class="answer-write" method="post" action="/api/questions/{{id}}/answers/create">
 									<div class="form-group" style="padding: 14px;">
 										<textarea class="form-control" placeholder="답변..." name="contents"></textarea>
 									</div>
@@ -129,11 +112,10 @@
 		</div>
 	</article>
 	</script>
-
 	{{> /include/footer}}
 	<!-- 위에서 사용할 가능성이 있어서 잠시 주석처리 
-<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
-					<input type="hidden" name="answerId" value="{4}" />
-				</form> -->
+	<form class="form-delete" action="/api/qna/deleteAnswer" method="POST">
+		<input type="hidden" name="answerId" value="{4}" />
+	</form> -->
 </body>
 </html>

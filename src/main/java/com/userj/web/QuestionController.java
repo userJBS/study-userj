@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.userj.domain.Question;
-import com.userj.domain.QuestionRepository;
 import com.userj.domain.User;
+import com.userj.repository.QuestionRepository;
 
 @Controller
 @RequestMapping("/questions")

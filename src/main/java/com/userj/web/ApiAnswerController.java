@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.userj.domain.Answer;
-import com.userj.domain.AnswerRepository;
 import com.userj.domain.Question;
-import com.userj.domain.QuestionRepository;
 import com.userj.domain.User;
+import com.userj.repository.AnswerRepository;
+import com.userj.repository.QuestionRepository;
 
 @RestController // 데이터를 JSON으로 변화 시키려면 @Controller 변경
 @RequestMapping("/api/questions/{questionId}/answers")

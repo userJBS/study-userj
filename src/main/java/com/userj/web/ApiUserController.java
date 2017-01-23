@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.userj.domain.User;
-import com.userj.domain.UserRepository;
+import com.userj.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/users")

@@ -56,11 +56,11 @@ function deletAnswer(e) {
 		error : function(xhr, status) {
 			console.log("error");
 		},
-		success: function(data, status) {
+		success : function(data, status) {
 			console.log(data);
-			if(data.valid){
+			if (data.valid) {
 				deleteBtn.closest("article").remove();
-			}else{
+			} else {
 				alert(data.errorMessage);
 			}
 		}
